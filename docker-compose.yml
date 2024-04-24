@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  database_mvc:
+      image: 'mysql/mysql-server:8.0.28'
+      # restart: always
+      ports:
+        - '3306:3306'
+      environment:
+        - MYSQL_ROOT_PASSWORD=mypassword123
+        - MYSQL_DATABASE=mvc_dev_db
+        - MYSQL_ROOT_HOST=%
+      # volumes:
+        # - './.mysql:/var/lib/mysql' #Where all the databse tables are etc
+        # - './build/db:/docker-entrypoint-initdb.d' #where we load the default data from
+        # - './mysql:/etc/mysql' #where we load our configurations from 
+
