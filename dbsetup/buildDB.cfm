@@ -1,5 +1,4 @@
 <cfsetting requestTimeOut = "120">
-<cfset queryOptions = { datasource = "legacyDSN" } />
 
 <cfscript>
 	void function addOrder( OrderID, OrderDate, CustomerName, Price )
@@ -13,8 +12,7 @@
 				OrderDate = { value = arguments.orderDate, cfsqltype = 'TIMESTAMP' },
 				CustomerName = { value = arguments.CustomerName, cfsqltype = 'VARCHAR' },
 				Price = { value = arguments.Price, cfsqltype = 'NUMERIC' }
-			}, 
-			variables.queryOptions
+			}
         );
 	}
 
@@ -29,8 +27,7 @@
 				 LastName  = { value=arguments.LastName, cfsqltype="varchar" },
 				 Password  = { value=arguments.password, cfsqltype="varchar" },
 				 Email     = { value=arguments.Email, cfsqltype="varchar" }
-			 }, 
-			 variables.queryOptions
+			 }
 		);
 	}
 
@@ -45,7 +42,7 @@
                     Price NUMERIC
                 )";
         
-        queryExecute( _SQL , {}, variables.queryOptions );
+        queryExecute( _SQL );
 
 		addOrder( 338, "4/1/2019", "Joe Elliott", "99.75" );
 		addOrder( 402, "5/11/2019", "Phil Collen", "125.00" );
@@ -63,7 +60,7 @@
 			,Email VARCHAR(50)
 			,HeadshotFileName VARCHAR(100)
 		)";
-		queryExecute( _SQL, {}, variables.queryOptions);
+		queryExecute( _SQL );
 
 		addUser( "Nolan", "Erck", "password", "nolan@vandelayindustries.biz" );
 		addUser( "Jerry", "Seinfeld", "password", "jerry@vandelayindustries.biz" );

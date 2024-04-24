@@ -2,15 +2,15 @@ component
 {
     variables.dbPath = expandPath( "/Derby" );
 
-    this.name = "legacy_cfml_app";
+    this.name = "mvc_pattern_cfml_app";
     
 	this.applicationTimeout = createTimeSpan(0,2,0,0); //2h
 	this.sessionManagement = true;
 	this.sessionTimeout = createTimeSpan(0,0,45,0); //45 min
-	this.datasource = "legacyDSN";    
+	this.datasource = "mvc_dsn";    
 
 	this.datasources = {
-        legacyDSN = {
+        mvc_dsn = {
             url = "jdbc:derby:#variables.dbPath#;create=true;MaxPooledStatements=300", 
             driver = "Apache Derby Embedded"
         }
@@ -24,6 +24,7 @@ component
 		}
 
         include arguments.targetPage;
-    }    
+    }
+
 }
 
