@@ -7,9 +7,9 @@
     <cfoutput>
     <h1>User List</h1>
 
-        <ul>
+        <ul class="list-group">
             <cfloop query="qUsers">
-                <li>
+                <li class="list-group-item">
                     <a href="UserDetail.cfm?userID=#qUsers.UserID#">#qUsers.FirstName# #qUsers.LastName#</a>
                 </li>
             </cfloop>
