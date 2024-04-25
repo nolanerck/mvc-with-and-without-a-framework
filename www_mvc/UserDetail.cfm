@@ -1,28 +1,10 @@
-<cfif cgi.REQUEST_METHOD eq "post">
-
-    <cfquery name="qUpdateUser">
-        UPDATE tUsers
-           SET FirstName = <cfqueryparam value="#form.FirstName#" cfsqltype="cf_sql_varchar" />,
-               LastName = <cfqueryparam value="#form.LastName#" cfsqltype="cf_sql_varchar" />,
-               Email = <cfqueryparam value="#form.Email#" cfsqltype="cf_sql_varchar" />
-        WHERE UserID = <cfqueryparam value="#form.UserID#" cfsqltype="cf_sql_integer" />
-    </cfquery>
-
-    <cflocation url="UserList.cfm" addtoken="false" />
-
-</cfif>
-
-<cfquery name="qUser">
-    SELECT *
-    FROM tUsers
-    WHERE UserID = <cfqueryparam value="#url.UserID#" cfsqltype="cf_sql_integer" />
-</cfquery>
+<cfset qUser = new model.User().getUserDetails( url.UserID ) />
 
 <cf_HeaderAndFooter>
     <cfoutput>
     <h1>User Details</h1>
 
-    <form name="frmUser" id="frmUser" method="post" action="UserDetail.cfm">
+    <form name="frmUser" id="frmUser" method="post" action="./controllers/UserController.cfc?method=saveUser">
         <input type="hidden" name="UserID" value="#qUser.UserID#" />
 
         <div class="form-group">

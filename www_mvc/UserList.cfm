@@ -1,7 +1,4 @@
-<cfquery name="qUsers">
-    SELECT *
-    FROM tUsers
-</cfquery>
+<cfset qUsers = new model.User().getAllUsers() />
 
 <cf_HeaderAndFooter>
     <cfoutput>
